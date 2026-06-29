@@ -72,6 +72,8 @@ try:
             ROUND(((velocity_km_s / NULLIF(miss_distance_lunar,0)) * 10)::numeric,2) AS calculated_threat_score
         FROM
             neo_tracking
+        WHERE 
+            close_approach_date >= CURRENT_DATE 
         ORDER BY
             calculated_threat_score DESC
     """
